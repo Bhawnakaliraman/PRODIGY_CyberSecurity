@@ -1,0 +1,29 @@
+def encrypt(text, shift):
+    result = ""
+    for char in text:
+        if char.isalpha():
+            base = ord('A') if char.isupper() else ord('a')
+            result += chr((ord(char) - base + shift) % 26 + base)
+        else:
+            result += char  # keep spaces or punctuation
+    return result
+
+def decrypt(text, shift):
+    return encrypt(text, -shift)
+
+# === User Input ===
+message = input("Enter your message: ")
+shift = int(input("Enter shift value: "))
+
+encrypted = encrypt(message, shift)
+print("Encrypted Message:", encrypted)
+
+decrypted = decrypt(encrypted, shift)
+print("Decrypted Message:", decrypted)
+
+# PS C:\Users\kalir\OneDrive\Desktop\PRODIGY_TrackCode_cybersecuriy>  & 'c:\Users\kalir\AppData\Local\Programs\Python\Python313\python.exe' 'c:\Users\kalir\.vscode\extensions\ms-python.debugpy-2025.8.0-win32-x64\bundled\libs\debugpy\launcher' '61414' '--' 'C:\Users\kalir\OneDrive\Desktop\PRODIGY_TrackCode_cybersecuriy\PRODIGY_CS_Task1' 
+# Enter your message: Hello World
+# Enter shift value: 3
+# Encrypted Message: Khoor Zruog
+# Decrypted Message: Hello World
+# PS C:\Users\kalir\OneDrive\Desktop\PRODIGY_TrackCode_cybersecuriy> 
